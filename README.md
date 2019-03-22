@@ -3,13 +3,13 @@
 ## Build
 
 ```
-docker build -t eur0c.laas.fr:5000/gepetto/buildfarm/format .
+docker build -t gepetto/linters .
 ```
 
 ## Push
 
 ```
-docker push eur0c.laas.fr:5000/gepetto/buildfarm/format
+docker push gepetto/linters
 ```
 
 ## Use locally
@@ -17,14 +17,14 @@ docker push eur0c.laas.fr:5000/gepetto/buildfarm/format
 :warning: this will update your current working directory :warning:
 
 ```
-docker run --rm -v $PWD:/app -w /app -it eur0c.laas.fr:5000/gepetto/buildfarm/format
+docker run --rm -v $PWD:/app -w /app -it gepetto/linters
 ```
 
 ## Use in Gitlab CI
 
 ```
 format:
-  image: eur0c.laas.fr:5000/gepetto/buildfarm/format
+  image: gepetto/linters
   script:
     - isort -c
     - flake8 .
