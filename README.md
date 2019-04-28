@@ -1,17 +1,5 @@
 # Linters for C++ & Python
 
-## Build
-
-```
-docker build -t gepetto/linters .
-```
-
-## Push
-
-```
-docker push gepetto/linters
-```
-
 ## Use locally
 
 ### With the pre-built docker image
