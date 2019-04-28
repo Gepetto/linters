@@ -19,7 +19,7 @@ docker push gepetto/linters
 :warning: this will update your current working directory :warning:
 
 ```
-docker run --rm -v $PWD:/builds/src -it gepetto/linters
+docker run --rm -v $PWD:/root/src -it gepetto/linters
 ```
 
 ### Manually

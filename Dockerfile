@@ -11,11 +11,11 @@ RUN apt-get update -qqy && apt-get install -qqy \
  && mkdir -p /root/.config/yapf \
  && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /builds/src
-WORKDIR /builds/src
+RUN mkdir -p /root/src
+WORKDIR /root/src
 
 ADD check-clang-format.sh /usr/local/bin
-ADD .clang-format setup.cfg /builds/
+ADD .clang-format setup.cfg /root/
 
 CMD check-clang-format.sh \
  && flake8 . \
