@@ -19,4 +19,4 @@ ADD .clang-format setup.cfg /root/
 
 CMD check-clang-format.sh \
  && flake8 . \
- && yapf -dr .
+ && yapf -ri .
