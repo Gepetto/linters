@@ -14,9 +14,7 @@ RUN apt-get update -qqy && apt-get install -qqy \
 RUN mkdir -p /root/src
 WORKDIR /root/src
 
-ADD check-clang-format.sh /usr/local/bin
+ADD check-clang-format.sh entrypoint.sh /usr/local/bin/
 ADD .clang-format setup.cfg /root/
 
-CMD check-clang-format.sh \
- && flake8 . \
- && yapf -ri .
+CMD entrypoint.sh
