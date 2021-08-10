@@ -32,7 +32,7 @@ format:
     - test -f /builds/setup.cfg || ln -s /root/setup.cfg /builds
     - test -f /builds/.clang-format || ln -s /root/.clang-format /builds
   script:
-    - isort -c
+    - yapf -dr .
     - flake8 .
     - check-clang-format.sh
 ```

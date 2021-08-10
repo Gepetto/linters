@@ -7,6 +7,7 @@ RUN apt-get update -qqy && apt-get install -qqy \
  && pip3 install --no-cache-dir \
     flake8 \
     isort \
+    nbqa \
     yapf \
  && mkdir -p /root/.config/yapf \
  && rm -rf /var/lib/apt/lists/*
