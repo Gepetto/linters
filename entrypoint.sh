@@ -2,5 +2,10 @@
 
 check-clang-format.sh || true
 flake8 .
-yapf -ri .
+if grep -q psf/black README.md
+then
+    black .
+else
+    yapf -ri .
+fi
 exit "$(git diff --ignore-submodules | wc -l)"

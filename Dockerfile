@@ -5,6 +5,7 @@ RUN apt-get update -qqy && apt-get install -qqy \
     git \
     python3-pip \
  && pip3 install --no-cache-dir \
+    black \
     flake8 \
     isort \
     nbqa \
