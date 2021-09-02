@@ -19,4 +19,4 @@ WORKDIR /root/src
 ADD check-clang-format.sh entrypoint.sh /usr/local/bin/
 ADD .clang-format setup.cfg /root/
 
-CMD entrypoint.sh
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

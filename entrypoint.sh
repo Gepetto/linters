@@ -1,11 +1,14 @@
 #!/bin/bash -eux
 
 check-clang-format.sh || true
-flake8 .
-if grep -q psf/black README.md
+if [[ -z "${1+x}" || "$1" != "--no-python" ]]
 then
-    black .
-else
-    yapf -ri .
+    flake8 .
+    if grep -q psf/black README.md
+    then
+        black .
+    else
+        yapf -ri .
+    fi
 fi
 exit "$(git diff --ignore-submodules | wc -l)"
