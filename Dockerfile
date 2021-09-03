@@ -1,5 +1,7 @@
 FROM ubuntu:18.04
 
+WORKDIR /root/src
+
 RUN apt-get update -qqy && apt-get install -qqy \
     clang-format-6.0 \
     git \
@@ -12,9 +14,6 @@ RUN apt-get update -qqy && apt-get install -qqy \
     yapf \
  && mkdir -p /root/.config/yapf \
  && rm -rf /var/lib/apt/lists/*
-
-RUN mkdir -p /root/src
-WORKDIR /root/src
 
 ADD check-clang-format.sh entrypoint.sh /usr/local/bin/
 ADD .clang-format setup.cfg /root/
