@@ -19,8 +19,8 @@ Then you can go to your project, and try the following commands:
 
 ```
 yapf -ri .
-flake8 .
-clang-format-6.0 -i $(find . -path ./cmake -prune -o -iregex '.*\.\(h\|c\|hh\|cc\|hpp\|cpp\|hxx\|cxx\)$' -print)
+flake8 .  # or "black ." depending on the project
+clang-format-12 -i $(find . -path ./cmake -prune -o -iregex '.*\.\(h\|c\|hh\|cc\|hpp\|cpp\|hxx\|cxx\)$' -print)
 ```
 
 ## Use in Gitlab CI
@@ -32,7 +32,7 @@ format:
     - test -f /builds/setup.cfg || ln -s /root/setup.cfg /builds
     - test -f /builds/.clang-format || ln -s /root/.clang-format /builds
   script:
-    - yapf -dr .
-    - flake8 .
-    - check-clang-format.sh
+    - entrypoint.sh
 ```
+
+(if your project doesn't have any python code, add `--no-python` to `entrypoint.sh`)

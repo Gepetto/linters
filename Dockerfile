@@ -1,12 +1,13 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 WORKDIR /root/src
 
 RUN apt-get update -qqy && apt-get install -qqy \
-    clang-format-6.0 \
+    clang-format-12 \
     git \
+    python-is-python3 \
     python3-pip \
- && pip3 install --no-cache-dir \
+ && python -m pip install --no-cache-dir \
     black \
     flake8 \
     isort \
