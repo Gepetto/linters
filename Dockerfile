@@ -3,6 +3,7 @@ FROM ubuntu:20.04
 WORKDIR /root/src
 
 RUN apt-get update -qqy && apt-get install -qqy \
+    clang-format-6.0 \
     clang-format-12 \
     git \
     python-is-python3 \
@@ -16,7 +17,7 @@ RUN apt-get update -qqy && apt-get install -qqy \
  && mkdir -p /root/.config/yapf \
  && rm -rf /var/lib/apt/lists/*
 
-ADD check-clang-format.sh entrypoint.sh /usr/local/bin/
-ADD .clang-format setup.cfg /root/
+ADD entrypoint.sh /usr/local/bin/
+ADD .clang-format .clang-format-6.0 setup.cfg /root/
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
