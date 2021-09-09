@@ -35,7 +35,9 @@ find . -path ./cmake -prune -o -iregex '.*\.\(h\|c\|hh\|cc\|hpp\|cpp\|hxx\|cxx\)
 
 ```
 format:
-  image: gepetto/linters
+  image:
+    name: gepetto/linters
+    entrypoint: [""]
   before_script:
     - test -f /builds/setup.cfg || ln -s /root/setup.cfg /builds
     - test -f /builds/.clang-format || ln -s /root/.clang-format /builds
