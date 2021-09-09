@@ -29,6 +29,10 @@ do
             BLACK=false
             shift
             ;;
+        *)
+            echo "incorrect argument: $1" >&2
+            exit 1
+            ;;
     esac
 done
 
