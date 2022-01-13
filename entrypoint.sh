@@ -31,6 +31,7 @@ do
             ;;
         *)
             echo "incorrect argument: $1" >&2
+            echo "remaining arguments are: $*" >&2
             exit 1
             ;;
     esac
