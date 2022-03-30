@@ -17,7 +17,7 @@ RUN --mount=type=cache,sharing=locked,target=/root/.cache \
     flake8 \
     isort \
     nbqa \
-    yapf \
+    yapf[pyproject] \
  && mkdir -p /root/.config/yapf
 
 ADD entrypoint.sh /usr/local/bin/
