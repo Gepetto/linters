@@ -15,7 +15,7 @@ Available flags:
 - `--no-cpp`: if you don't want to lint c++ code
 - `--no-python`: if you don't want to lint python code
 - `--clang-6`: if you want clang-format-6.0 instead of the default clang-format-12
-- `--clang-default`: if you want clang-format default style instead of provided .clang-format configurations
+- `--clang-default`: use latest clang-format from PyPI with `--style=Google` without `.clang-format` files
 - `--black`: if you want to use black instead of yapf, and you don't have a README.md including the "psf/black" string
 - `--yapf`: if you want to use yapf instead of black, even if you have a README.md including a "psf/black" string
 

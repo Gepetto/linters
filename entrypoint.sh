@@ -22,7 +22,7 @@ do
             shift
             ;;
         --clang-default)
-            CLANG="$CLANG --style=Google"
+            CLANG="clang-format --style=Google"
             rm /root/.clang-format
             shift
             ;;
