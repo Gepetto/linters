@@ -13,6 +13,7 @@ RUN --mount=type=cache,sharing=locked,target=/root/.cache \
     python3-pip \
  && python -m pip install --upgrade pip\
  && python -m pip install \
+    clang-format \
     black \
     flake8 \
     isort \
