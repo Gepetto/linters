@@ -21,6 +21,11 @@ do
             cp /root/.clang-format{-6.0,}
             shift
             ;;
+        --clang-default)
+            CLANG="$CLANG --style=Google"
+            rm /root/.clang-format
+            shift
+            ;;
         --black)
             BLACK=true
             shift
