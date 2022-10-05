@@ -7,13 +7,13 @@ RUN --mount=type=cache,sharing=locked,target=/root/.cache \
     --mount=type=cache,sharing=locked,target=/var/lib/apt \
     apt-get update -qqy && apt-get install -qqy \
     clang-format-6.0 \
-    clang-format-12 \
     git \
     python-is-python3 \
     python3-pip \
  && python -m pip install --upgrade pip\
  && python -m pip install \
     black \
+    clang-format \
     flake8 \
     isort \
     nbqa \

@@ -2,7 +2,7 @@
 
 CPP=true
 PYTHON=true
-CLANG=clang-format-12
+CLANG=clang-format
 BLACK=$(grep -q psf/black README.md 2> /dev/null && echo true || echo false)
 
 while [[ $# -gt 0 ]]
