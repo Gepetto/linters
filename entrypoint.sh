@@ -44,12 +44,17 @@ done
 
 if $CPP
 then
-    find . -path ./cmake -prune -o -iregex '.*\.\(h\|c\|hh\|cc\|hpp\|cpp\|hxx\|cxx\)$' -exec $CLANG -i {} +
+    find . -path ./cmake -prune -o -iregex '.*\.\(h\|c\|hh\|cc\|hpp\|cpp\|hxx\|cxx\)$' -exec "$CLANG" -i {} +
 fi
 
 if $PYTHON
 then
-    flake8 .
+    if grep -q ruff README.md
+    then
+        ruff .
+    else
+        flake8 .
+    fi
     if $BLACK
     then
         black .
