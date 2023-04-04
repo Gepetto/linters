@@ -4,6 +4,7 @@ CPP=true
 PYTHON=true
 CLANG=clang-format
 BLACK=$(grep -q psf/black README.md 2> /dev/null && echo true || echo false)
+RUFF=$(grep -q ruff README.md 2> /dev/null && echo true || echo false)
 
 while [[ $# -gt 0 ]]
 do
@@ -34,6 +35,14 @@ do
             BLACK=false
             shift
             ;;
+        --ruff)
+            RUFF=true
+            shift
+            ;;
+        --flake8)
+            RUFF=false
+            shift
+            ;;
         *)
             echo "incorrect argument: $1" >&2
             echo "remaining arguments are: $*" >&2
@@ -44,12 +53,12 @@ done
 
 if $CPP
 then
-    find . -path ./cmake -prune -o -iregex '.*\.\(h\|c\|hh\|cc\|hpp\|cpp\|hxx\|cxx\)$' -exec "$CLANG" -i {} +
+    find . -path ./cmake -prune -o -iregex '.*\.\(h\|c\|hh\|cc\|hpp\|cpp\|hxx\|cxx\)$' -exec $CLANG -i {} +
 fi
 
 if $PYTHON
 then
-    if grep -q ruff README.md
+    if $RUFF
     then
         ruff .
     else
