@@ -2,7 +2,7 @@
 
 CPP=true
 PYTHON=true
-CLANG_ARGS="--style=Google"
+CLANG_ARGS=""
 BLACK=$(grep -q psf/black README.md 2> /dev/null && echo true || echo false)
 RUFF=$(grep -q ruff README.md 2> /dev/null && echo true || echo false)
 
@@ -49,7 +49,7 @@ done
 if $CPP
 then
     find . -path ./cmake -prune -o -iregex '.*\.\(h\|c\|hh\|cc\|hpp\|cpp\|hxx\|cxx\)$' \
-        -exec clang-format "$CLANG_ARGS" -i {} +
+        -exec clang-format "$CLANG_ARGS" --style=Google -i {} +
 fi
 
 if $PYTHON
