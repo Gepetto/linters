@@ -49,7 +49,7 @@ done
 if $CPP
 then
     find . -path ./cmake -prune -o -iregex '.*\.\(h\|c\|hh\|cc\|hpp\|cpp\|hxx\|cxx\)$' \
-        -exec clang-format "$CLANG_ARGS" --style=Google -i {} +
+        -exec clang-format --style=Google "$CLANG_ARGS" -i {} +
 fi
 
 if $PYTHON
