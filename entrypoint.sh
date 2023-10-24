@@ -19,11 +19,12 @@ do
             ;;
         --clang-args)
             shift
-            CLANG_ARGS="$1"
-            shift
-            ;;
-        --no-sort-includes)
-            CLANG_ARGS='--style={BasedOnStyle: Google, SortIncludes: false}'
+            if [[ "$1" = "--no-sort-includes" ]]
+            then
+                CLANG_ARGS='--style={BasedOnStyle: Google, SortIncludes: false}'
+            else
+                CLANG_ARGS="$1"
+            fi
             shift
             ;;
         --black)
