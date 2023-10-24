@@ -2,7 +2,7 @@
 
 CPP=true
 PYTHON=true
-CLANG=clang-format
+CLANG_ARGS=""
 BLACK=$(grep -q psf/black README.md 2> /dev/null && echo true || echo false)
 RUFF=$(grep -q ruff README.md 2> /dev/null && echo true || echo false)
 
@@ -17,14 +17,9 @@ do
             PYTHON=false
             shift
             ;;
-        --clang-6)
-            CLANG=clang-format-6.0
-            cp /root/.clang-format{-6.0,}
+        --clang-args)
             shift
-            ;;
-        --clang-default)
-            CLANG="clang-format --style=Google"
-            rm /root/.clang-format
+            CLANG_ARGS="$1"
             shift
             ;;
         --black)
@@ -53,7 +48,8 @@ done
 
 if $CPP
 then
-    find . -path ./cmake -prune -o -iregex '.*\.\(h\|c\|hh\|cc\|hpp\|cpp\|hxx\|cxx\)$' -exec $CLANG -i {} +
+    find . -path ./cmake -prune -o -iregex '.*\.\(h\|c\|hh\|cc\|hpp\|cpp\|hxx\|cxx\)$' \
+        -exec clang-format --style=Google $CLANG_ARGS -i {} +
 fi
 
 if $PYTHON
