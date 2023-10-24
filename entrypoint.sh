@@ -22,6 +22,10 @@ do
             CLANG_ARGS="$1"
             shift
             ;;
+        --no-sort-includes)
+            CLANG_ARGS='--style={BasedOnStyle: Google, SortIncludes: false}'
+            shift
+            ;;
         --black)
             BLACK=true
             shift
