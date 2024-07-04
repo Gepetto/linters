@@ -3,8 +3,6 @@
 CPP=true
 PYTHON=true
 CLANG_ARGS="--style=Google"
-BLACK=$(grep -q psf/black README.md 2> /dev/null && echo true || echo false)
-RUFF=$(grep -q ruff README.md 2> /dev/null && echo true || echo false)
 
 while [[ $# -gt 0 ]]
 do
@@ -27,22 +25,6 @@ do
             fi
             shift
             ;;
-        --black)
-            BLACK=true
-            shift
-            ;;
-        --yapf)
-            BLACK=false
-            shift
-            ;;
-        --ruff)
-            RUFF=true
-            shift
-            ;;
-        --flake8)
-            RUFF=false
-            shift
-            ;;
         *)
             echo "incorrect argument: $1" >&2
             echo "remaining arguments are: $*" >&2
@@ -59,18 +41,8 @@ fi
 
 if $PYTHON
 then
-    if $RUFF
-    then
-        ruff .
-    else
-        flake8 .
-    fi
-    if $BLACK
-    then
-        black .
-    else
-        yapf -ri .
-    fi
+    ruff check --exit-non-zero-on-fix
+    ruff format --check
 fi
 
 chown -R "$(stat -c "%u:%g" .)" .
