@@ -1,3 +1,6 @@
+ci:
+  skip:
+  - shellcheck
 repos:
 - repo: https://github.com/koalaman/shellcheck-precommit
   rev: v0.10.0
